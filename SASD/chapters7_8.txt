@@ -1,0 +1,19 @@
+﻿
+Chapter 7
+1.
+	Q. What are the three major reasons why you should be familiar with the evolution of systems analysis?
+
+	A. First, system development team has envolved and making it with old traditions.
+	   Second, there should be open minded for new tools and new procedures. 
+	   Third, The approaches to system analysis has change in past decades and there might be new ways, 
+	   programs or procedures to go thru.
+
+Chapter 8
+7.
+	Q. Why is it important for a modeling tool to portray a system in a top-down 
+	  fashion? Are there any situations where it doesn’t matter?
+	
+	A. If model is modelled top-down fashion it will be lot easier to read, because in
+	   first level you will get big picture of the product and after that you will
+	   get more accurate description of smaller parts of the product. If product which is
+	   to be modelled is very simple whole the whole model might just fit in one page.
