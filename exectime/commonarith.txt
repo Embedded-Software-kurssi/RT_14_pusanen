@@ -1,0 +1,25 @@
+starttime 10,19us
+
+int + int
+stopWatch: 10.69us
+executionTime: 0,5us
+
+int * int
+stopWatch: 11,19us
+executionTime: 0,5us
+
+int >= int
+stopWatch: 11,69us
+executionTime: 0,5us
+
+float >= float
+stopWatch: 12,69us
+executionTime: 1us
+
+float + float
+stopWatch: 13,69us
+executionTime: 1us
+
+float * float
+stopWatch: 14,69us
+executionTime: 1us
