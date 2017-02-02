@@ -1,0 +1,4 @@
+ToDo 2
+	b. By the text, his is tested with a slow microcontroller. It reads values from enviorment by light-sensor.
+	Values are temporary stored in memory and  the both extremevalues from the high and low side wille be ignored.
+	Thats why the median will be stronger
