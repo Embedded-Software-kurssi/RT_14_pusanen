@@ -5,3 +5,36 @@ ToDo 2:
 	b) By the text, this is tested with a slow microcontroller. It reads values from enviorment by light-sensor.
 	Values are temporary stored in memory and  the both extremevalues from the high and low side will be ignored.
 	Thats why the median will be stronger and it fits well to real time systems.
+
+	c) 0,19us
+
+	#include <avr/io.h>
+	#include <stdlib.h>
+
+
+int main(void)
+{
+	volatile int filter[] = {
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	};
+
+    /* Replace with your application code */
+    for (int i = 0; i < 11; i++) {
+		filter[i] = rand();
+	}
+	int median = filter[5];
+}
+
+d)
+
+	
