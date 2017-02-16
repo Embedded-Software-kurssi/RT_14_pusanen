@@ -1,0 +1,3 @@
+a) minor cycle
+b) major cycle
+c) jitter
