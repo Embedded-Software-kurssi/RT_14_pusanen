@@ -1,3 +1,11 @@
-a) minor cycle
-b) major cycle
-c) jitter
+a)
+    conseptname: minor cycle
+    explanation: Minor cycle is length of shortest task period time.
+b)
+    conseptname: major cycle
+    explanation: Marjor cycle is time of the longest task period time in tasks. For example if your tasks period times are 1ms, 5ms and 10ms major cycle would be 10ms.
+c) 
+    conseptname: jitter
+    explanation: Jitter means that when some task is executed in frame 
+                 for example in filetering. Executiontime may depend on the size
+                 or values of inputs.
