@@ -1,0 +1,4 @@
+b) 
+	fuzzy sets: 3
+	inference rules: 1
+	outputs: 1
