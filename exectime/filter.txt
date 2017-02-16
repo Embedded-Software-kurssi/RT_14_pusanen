@@ -37,4 +37,11 @@ int main(void)
 
 d)
 
-	
+
+
+e)
+Table size 19 
+executiontime 0,19us
+
+Table size 25
+executiontime 0,19us
