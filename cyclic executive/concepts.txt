@@ -1,9 +1,12 @@
 a)
     conseptname: minor cycle
-    explanation: Minor cycle is length of shortest task period time.
+    explanation: Major cycle is splitted into minor cycles and tasks are executed minor cycles.
+                 Each minor cycle is same length.
 b)
     conseptname: major cycle
-    explanation: Marjor cycle is time of the longest task period time in tasks. For example if your tasks period times are 1ms, 5ms and 10ms major cycle would be 10ms.
+    explanation: Major cycle is what programs loops forever and each major cycle is same length and 
+                 has same tasks. Major cycle contains many minor cycles.
+
 c) 
     conseptname: jitter
     explanation: Jitter means that when some task is executed in frame 
