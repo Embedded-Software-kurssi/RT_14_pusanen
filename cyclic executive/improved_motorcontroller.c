@@ -6,7 +6,6 @@
 */
 
 
-const unsigned long	FRAME_MS = 10;
 const unsigned long FRAMES = 10;
 volatile int nextFrame = 0;
 

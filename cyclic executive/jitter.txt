@@ -1,1 +1,2 @@
-10 239 us
+Minor cycle shoud be 1000us, but millis extra time so
+it will be 1023us.

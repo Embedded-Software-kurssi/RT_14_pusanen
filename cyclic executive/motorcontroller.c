@@ -1,4 +1,4 @@
-const unsigned long	FRAME_MS = 10;
+const unsigned long	FRAME_MS = 1;
 const unsigned long FRAMES = 10;
 unsigned long next_frame_start = 10;
 
