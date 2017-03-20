@@ -1,4 +1,16 @@
+a)
+	Q.	Measure the execution time of one inference loop in example code.
+
+	A. 	2 152us	
+
 b) 
-	fuzzy sets: 3
-	inference rules: 1
-	outputs: 1
+	Q.	Determine the number of inputs, number of input fuzzy sets, number of inference rules, number of outputs and number of output fuzzy sets for the example system. 
+		See article "Computational complexity of general fuzzy logic control and its simplification for a loop controller" for reference. 
+		Does the system have triangular or non-specific fuzzy sets? Does the system have minimum or product inference (or neither)? 
+		Does the system use Mean-of-maximum or Center-of-area method for defuzzification (or neither)?
+
+	A.
+		number of inputs 
+		fuzzy sets: 3
+		inference rules: 15
+		outputs: 2
