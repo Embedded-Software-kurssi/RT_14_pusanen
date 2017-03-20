@@ -1,16 +1,34 @@
 a)
 	Q.	Measure the execution time of one inference loop in example code.
 
-	A. 	2 152us	
+	A. 	884,81 µs	
 
 b) 
-	Q.	Determine the number of inputs, number of input fuzzy sets, number of inference rules, number of outputs and number of output fuzzy sets for the example system. 
+	Q.	Determine the number of inputs, number of input fuzzy sets, number of inference rules, 
+		number of outputs and number of output fuzzy sets for the example system. 
 		See article "Computational complexity of general fuzzy logic control and its simplification for a loop controller" for reference. 
 		Does the system have triangular or non-specific fuzzy sets? Does the system have minimum or product inference (or neither)? 
 		Does the system use Mean-of-maximum or Center-of-area method for defuzzification (or neither)?
 
 	A.
-		number of inputs 
-		fuzzy sets: 3
+		inputs: 2
+		input fuzzy sets: 7
 		inference rules: 15
-		outputs: 2
+		outputs: 1
+		output fuzzy sets: 7
+		
+		System has triangular fuzzy sets.
+
+
+
+c)
+	Q.	Measure the effect of each variable listed above to execution time. 
+		In theory, you would add/remove one rule (or other variable)
+		and measure the change in execution time.
+
+	A. 
+		Removed one inference rule and executiontime is 815,69 µs
+		Removed one angle rule and executiontime is 777,44 µs
+		Removed one velocity rule and executiontime is 878,75 µs
+		Removed one force rule and executiontime is 829,69 µs
+		
