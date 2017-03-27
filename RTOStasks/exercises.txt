@@ -50,3 +50,11 @@ B.
 			Q. How much free RAM you have?
 
 			A.	2049 - 1949 = 99 bytes
+
+	3.
+		Q. 	In your FreeRTOS application, you can check the actual heap usage after you have created all RTOS objects, 
+			as described in memory management documentation: "The xPortGetFreeHeapSize() API function returns the total amount of heap space that remains unallocated, 
+			allowing the configTOTAL_HEAP_SIZE setting to be optimised." 
+			How much free heap space you have in the demo (append to file "exercises.txt" and commit)?
+
+		A. 	413 bytes
