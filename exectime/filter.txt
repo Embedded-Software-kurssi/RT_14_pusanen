@@ -1,47 +1,51 @@
 
 ToDo 2:
-   	a) 10*(0,5us + 0,5us) = 10 us
+a) 
+	Q.  Knowing that FIR calculation for each tap is one addition and one multiplication, 
+		estimate the amount of execution time required for a 10-tap floating point FIR filter (based on your measurements above).
+	   
+	A.   10*(0,5us + 0,5us) = 10 us
 
-	b) By the text, this is tested with a slow microcontroller. It reads values from enviorment by light-sensor.
-	Values are temporary stored in memory and  the both extremevalues from the high and low side will be ignored.
-	Thats why the median will be stronger and it fits well to real time systems.
+b)
+	Q. 	Study meadian filter implementation in http://www.embedded.com/design/programming-languages-and-tools/4399504/Better-Than-Average 
+		This particular implementation is claimed to suit real-time systems. Why?
 
-	c) 0,19us
+	A. 	By the text, this is tested with a slow microcontroller. It reads values from enviorment by light-sensor.
+		Values are temporary stored in memory and  the both extremevalues from the high and low side will be ignored.
+		Thats why the median will be stronger and it fits well to real time systems.
 
-	#include <avr/io.h>
-	#include <stdlib.h>
 
 
-int main(void)
-{
-	volatile int filter[] = {
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0
-	};
-
-    /* Replace with your application code */
-    for (int i = 0; i < 11; i++) {
-		filter[i] = rand();
-	}
-	int median = filter[5];
-}
+c)
+	Q. 	Implement Arduino code to feed the filter with random (int) numbers. 
+		Measure filter execution time when filter length N=11. Note that you must fill the filter with N samples before measuring.
+	
+	A.	78,75us
 
 d)
 
+	Q.
 
+	A.
 
 e)
-Table size 19 
-executiontime 0,19us
+	Q.  Measure filter execution time with different filter lengths to prove whether O(N) claim holds. 
+		Document your results.
 
-Table size 25
-executiontime 0,19us
+	A. 	Exucution time increaces lieneary so meaning that complexity O(N).
+
+		Table size 11
+		executiontime 78,75us
+
+		Table size 12
+		executiontime 80,06us
+
+		Table size 13
+		executiontime 81,75us
+
+		Table size 14
+		executiontime 84,19us
+
+		Table size 15
+		executiontime 85,50us
+
