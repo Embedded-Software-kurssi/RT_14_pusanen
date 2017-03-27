@@ -1,0 +1,22 @@
+A.
+
+
+B.
+	1.
+		a)
+			Q. Why does FreeRTOS implement a separate dynamic memory management service instead of using C standard library services?
+
+			A. 
+				Standard c library malloc and free may not be allways awaivable in embended systems.
+				They take up valuable code space and they are not thread safe.
+				They are not deterministic.
+				FreeRTOS separate implemented dynamic memory management services are more effient than most 
+				c library malloc implementations, because they are made for specific purpose, but standard
+				functions are made to be more generic.
+
+		b)
+			Q. Why is Heap_1.c implementation particularly suitable for embedded real-time systems?
+
+			A. 	In many embended real-time systems memory allocations are done in system boot 
+				so this means that there is no need to delete task, queue, semaphore, mutex, etc.
+				This makes code allways deterministic and total code size can be smaller.
