@@ -4,7 +4,7 @@ A.
 B.
 	1.
 		a)
-			Q. Why does FreeRTOS implement a separate dynamic memory management service instead of using C standard library services?
+			Q. 	Why does FreeRTOS implement a separate dynamic memory management service instead of using C standard library services?
 
 			A. 
 				Standard c library malloc and free may not be allways awaivable in embended systems.
@@ -15,8 +15,38 @@ B.
 				functions are made to be more generic.
 
 		b)
-			Q. Why is Heap_1.c implementation particularly suitable for embedded real-time systems?
+			Q. 	Why is Heap_1.c implementation particularly suitable for embedded real-time systems?
 
 			A. 	In many embended real-time systems memory allocations are done in system boot 
 				so this means that there is no need to delete task, queue, semaphore, mutex, etc.
 				This makes code allways deterministic and total code size can be smaller.
+
+	2.
+		a)
+			Q. 	What is the RAM start address (tagged by "PROVIDE (__data_start, .)") ? This should be equal to RAM start address in CPU data sheet, verify.
+
+			A. 	0x00800100
+
+		b)
+			Q. 	How much RAM space is required by initialised variables? This is the space between start above and tag "PROVIDE (__data_end, .)"
+
+			A. 
+				0x00800100 - 0x0080010c		
+				12 bytes
+
+		c)
+			Q. 	What is the total RAM usage of your program? This is the space between start above and tag "PROVIDE (__bss_end, .)"
+
+			A. 
+				0x00800100 - 0x0080054b
+				1091 bytes
+
+		d)
+			Q. 	What is space allocated for heap? This can be found as total allocation module "heap_1.o" in .bss segment.
+
+			A.	1949
+
+		e)
+			Q. How much free RAM you have?
+
+			A.	2049 - 1949 = 99 bytes
