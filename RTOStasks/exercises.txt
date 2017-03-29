@@ -1,5 +1,29 @@
 A.
+	1.
 
+	2.
+		a.
+			Q.	Study the main.c file. How many tasks are there in the application (application=main.c in this case)?
+
+			A.	2
+
+		b.
+			Q.	How many tasks are there in system? (system = application + OS)
+
+			A.	
+
+		c.
+			Q.	What are the priorities of the tasks in the system? Find numerical values.
+
+			A. 
+				idle task priority is 0
+				application task priority is 1
+
+		d.
+			Q.	What are scheduling policies for tasks with equal priorities? See http://www.freertos.org/RTOS-task-priority.html and file FreeRTOSConfig.h
+
+			A.	
+				Tasks with eaqual priorities will share available processing time.
 
 B.
 	1.
