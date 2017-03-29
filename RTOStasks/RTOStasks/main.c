@@ -22,6 +22,7 @@
 // in FreeRTOS, higher priority value means higher priority 
 #define mainTEST_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
 
+
 static void vTestTask1( void *pvParameters );
 static void vTestTask2( void *pvParameters );
 /* FreeRTOS has several hooks available. If enabled in FreeRTOSConfig.h, the OS will call hooks 
@@ -32,8 +33,14 @@ int main( void )
     // create tasks and start scheduler
 	xTaskCreate( vTestTask1, ( const char * ) "T1", 255, (void *)('1'), mainTEST_TASK_PRIORITY, NULL );
 	xTaskCreate( vTestTask2, ( const char * ) "T2", 255, (void *)('2'), mainTEST_TASK_PRIORITY, NULL );
+	volatile int a = xPortGetFreeHeapSize();
 	vTaskStartScheduler();
 	return 0;
+}
+
+void vApplicationStackOverflowHook( TaskHandle_t xTask,
+                                    signed char *pcTaskName ) {
+	volatile a = 1;
 }
 
 
@@ -45,6 +52,10 @@ static void vTestTask1( void *pvParameters )
     for( ;; )
 	{
 		PORTD |= pinmask;
+		volatile unsigned short lista[105];
+		for (unsigned short i = 0; i < 105; i++) {
+			lista[i] = rand();
+		}		
         _delay_ms( 1 );   //simulate task work done
         PORTD &= ~pinmask; 
         vTaskDelay( 1 );
