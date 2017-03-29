@@ -28,36 +28,27 @@ static void vTestTask2( void *pvParameters );
 /* FreeRTOS has several hooks available. If enabled in FreeRTOSConfig.h, the OS will call hooks 
    at each corresponding event  */
 
+void vContextSwitch();
+
 int main( void )
 {
+	//PORTD |= 0x01;
     // create tasks and start scheduler
 	xTaskCreate( vTestTask1, ( const char * ) "T1", 255, (void *)('1'), mainTEST_TASK_PRIORITY, NULL );
 	xTaskCreate( vTestTask2, ( const char * ) "T2", 255, (void *)('2'), mainTEST_TASK_PRIORITY, NULL );
-	volatile int a = xPortGetFreeHeapSize();
 	vTaskStartScheduler();
 	return 0;
 }
 
-void vApplicationStackOverflowHook( TaskHandle_t xTask,
-                                    signed char *pcTaskName ) {
-	volatile a = 1;
-}
-
-
 static void vTestTask1( void *pvParameters )
 {
 	( void ) pvParameters;
+	vTaskSetApplicationTaskTag( NULL, ( void * ) 0x01 );
 	uint8_t pinmask = 0x01; 
 	DDRD |= pinmask;
     for( ;; )
 	{
-		PORTD |= pinmask;
-		volatile unsigned short lista[105];
-		for (unsigned short i = 0; i < 105; i++) {
-			lista[i] = rand();
-		}		
-        _delay_ms( 1 );   //simulate task work done
-        PORTD &= ~pinmask; 
+        _delay_ms( 1 );   //simulate task work done 
         vTaskDelay( 1 );
 	}
 }
@@ -65,15 +56,28 @@ static void vTestTask1( void *pvParameters )
 static void vTestTask2( void *pvParameters )
 {
 	( void ) pvParameters;
+	vTaskSetApplicationTaskTag( NULL, ( void * ) 0x02 );
 	uint8_t pinmask = 0x02;
 	DDRD |= pinmask;
 	for( ;; )
 	{
-		PORTD |= pinmask;
 		_delay_ms( 1 );   //simulate task work done
-		PORTD &= ~pinmask;
 		vTaskDelay( 1 );
 	}
 }
+
+void vContextSwitch() {
+	if (PORTD == 0x01) {
+		PORTD &= ~0x01;
+		PORTD |= 0x02;
+	} else {
+		PORTD &= ~0x02;
+		PORTD |= 0x01;
+	}
+}
+
+
+
+
 
 
