@@ -30,6 +30,8 @@ static void vTestTask2( void *pvParameters );
 
 void vContextSwitch();
 
+const TickType_t xFrequency = 1;
+
 int main( void )
 {
 	//PORTD |= 0x01;
@@ -44,12 +46,14 @@ static void vTestTask1( void *pvParameters )
 {
 	( void ) pvParameters;
 	vTaskSetApplicationTaskTag( NULL, ( void * ) 0x01 );
-	uint8_t pinmask = 0x01; 
+	uint8_t pinmask = 0x01;
+	TickType_t xLastWakeTime;
 	DDRD |= pinmask;
     for( ;; )
 	{
+		xLastWakeTime = xTaskGetTickCount();
         _delay_ms( 1 );   //simulate task work done 
-        vTaskDelay( 1 );
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
 	}
 }
 
@@ -58,11 +62,13 @@ static void vTestTask2( void *pvParameters )
 	( void ) pvParameters;
 	vTaskSetApplicationTaskTag( NULL, ( void * ) 0x02 );
 	uint8_t pinmask = 0x02;
+	TickType_t xLastWakeTime;
 	DDRD |= pinmask;
 	for( ;; )
 	{
+		xLastWakeTime = xTaskGetTickCount();
 		_delay_ms( 1 );   //simulate task work done
-		vTaskDelay( 1 );
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
 	}
 }
 
