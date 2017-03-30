@@ -1,5 +1,22 @@
 1.
+	Q. Define following concepts.
+		a. 
+			Conceptname: re-entrancy
+			Definition: re-entrancy means that when an apllication that has
+						concurrent tasks objects that are used in tasks are
+						made thread safe by allways copying all needed resources
+						for task with task. So if same task is executed in two places 
+						same time both would have own copy of instructions.
 
-	a. re-entrancy
-	b. mutual exclusion
-	c. atomic operation
+		b. 
+			Conceptname: mutual exclusion
+			Definition: Mutual exclusion mutex is method in computer sience
+						for preventing race conditions between where many 
+						concurrent processes access same shared data.
+						Mutex locs resource while its been acessed.
+
+		c. 
+			Conceptname: atomic operation
+			Definition:	Atomic operation is a operation which is thread safe and its
+						execution cannot be interrupted by any other thead or similar 
+						concurrent task.
