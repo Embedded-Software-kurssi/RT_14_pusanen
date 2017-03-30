@@ -1,0 +1,5 @@
+1.
+
+	a. re-entrancy
+	b. mutual exclusion
+	c. atomic operation
