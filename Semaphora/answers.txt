@@ -20,3 +20,17 @@
 			Definition:	Atomic operation is a operation which is thread safe and its
 						execution cannot be interrupted by any other thead or similar 
 						concurrent task.
+
+5.
+	a.
+		Q.	Fix the problem by disabling interrupts in critical code section (thus disabling context switches by timer interrupt). 
+			Minimise the time interrupts are disabled. Measure time during which interrupts are disabled. 
+			How would you need to use this result in RMA analysis (with blocking)?
+
+		A.	
+			cli();
+			shared=0x0000;
+			shared=0xFFFF;		
+			sei();
+
+			Interrupts are disabled 0,50 µs

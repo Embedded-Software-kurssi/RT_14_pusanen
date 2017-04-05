@@ -5,6 +5,7 @@
 ****************************************************************************/
 #include <avr/io.h> 
 #include <util/delay.h>
+#include <avr/interrupt.h>
 #include <stdio.h>
 
 /* FreeRTOS include files are located in FreeRTOS/sources/include, which must be set as an additional
@@ -35,8 +36,10 @@ static void vWriterTask( void *pvParameters )
 	( void ) pvParameters;
 	while(1)
 	{
+		cli();
 		shared=0x0000;
-		shared=0xFFFF;
+		shared=0xFFFF;		
+		sei();
 	}
 }
 
