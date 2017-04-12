@@ -98,6 +98,9 @@
 #define configIDLE_SHOULD_YIELD		1
 #define configQUEUE_REGISTRY_SIZE	0
 
+#define configSUPPORT_DYNAMIC_ALLOCATION 1
+
+
 #define configCHECK_FOR_STACK_OVERFLOW 0
 #define configUSE_APPLICATION_TASK_TAG 0
 /* Co-routine definitions. */
@@ -114,5 +117,6 @@ to exclude the API function. */
 #define INCLUDE_vTaskSuspend			0
 #define INCLUDE_vTaskDelayUntil			0
 #define INCLUDE_vTaskDelay				1
+
 
 #endif /* FREERTOS_CONFIG_H */
