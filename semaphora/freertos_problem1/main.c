@@ -15,8 +15,8 @@
 #include "semphr.h"
 
 // in FreeRTOS, higher priority value means higher priority 
-#define WRITER_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
-#define READER_TASK_PRIORITY			( tskIDLE_PRIORITY + 2 )
+#define WRITER_TASK_PRIORITY			( tskIDLE_PRIORITY + 2 )
+#define READER_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
 
 static void vWriterTask( void *pvParameters );
 static void vReaderTask( void *pvParameters );
@@ -28,7 +28,8 @@ int main( void )
     // create tasks and start scheduler
 	xTaskCreate( vWriterTask, ( const char * ) "T1", 255, (void *)('1'), WRITER_TASK_PRIORITY, NULL );
 	xTaskCreate( vReaderTask, ( const char * ) "T2", 255, (void *)('2'), READER_TASK_PRIORITY, NULL );
-	
+	xSemaphore = xSemaphoreCreateBinary();
+	xSemaphoreGive(xSemaphore);
 	vTaskStartScheduler();
 	return 0;
 }
@@ -38,6 +39,7 @@ volatile int shared;
 static void vWriterTask( void *pvParameters )
 {
 	( void ) pvParameters;
+
 	while(1)
 	{
 		if (xSemaphore != NULL) {
@@ -48,6 +50,7 @@ static void vWriterTask( void *pvParameters )
 				xSemaphoreGive(xSemaphore);		
 			}
 		}
+		vTaskDelay( 1 );
 	}
 }
 
@@ -55,8 +58,6 @@ static void vReaderTask( void *pvParameters )
 {
 	( void ) pvParameters;
 	DDRD |= 0x80;
-	xSemaphore = xSemaphoreCreateBinary();
-	xSemaphoreGive(xSemaphore);
 	while(1)
 	{
 		if (xSemaphore != NULL) {
@@ -78,7 +79,6 @@ static void vReaderTask( void *pvParameters )
 				xSemaphoreGive(xSemaphore);
 			}
 		}
-		vTaskDelay( 1 );
 	}
 }
 
