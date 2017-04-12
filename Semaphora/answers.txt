@@ -21,6 +21,14 @@
 						execution cannot be interrupted by any other thead or similar 
 						concurrent task.
 
+3.
+	Q. 
+		Read article https://barrgroup.com/Embedded-Systems/How-To/Top-Ten-Nasty-Firmware-Bugs and also its continuation in part 2. 
+		Which bugs are directly related to resource sharing? 
+
+	A.	Deadlock, Race Condition and Non-Reentrant Function.
+
+
 5.
 	a.
 		Q.	Fix the problem by disabling interrupts in critical code section (thus disabling context switches by timer interrupt). 
