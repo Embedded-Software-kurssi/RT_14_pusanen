@@ -34,3 +34,11 @@
 			sei();
 
 			Interrupts are disabled 0,50 µs
+
+
+7. 
+	Q. Which task gets preempted if both tasks have identical priorities?
+
+	A. 
+		If two task have equal priorities tasks will be preempted according to wait time in task.
+		If one of tasks don't have any wait time it will take all the available.
