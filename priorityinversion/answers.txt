@@ -1,9 +1,95 @@
 
 1.
-    a.
-        Q.  All RTOS functions use "system tick" as time unit. What is the system tick milliseconds in this example?
+	a.
+		Q.  
+			All RTOS functions use "system tick" as time unit. 
+			What is the system tick milliseconds in this example?
 
-        A.  Tickrate is 1000hz so it is 1ms
+		A.  Tickrate is 1000hz so it is 1ms
 
-    b.
-        Q. Draw a SA/SD data flow diagram including all tasks and shared variables. Include task priority information.
+	b.
+		Q.  
+			Draw a SA/SD data flow diagram including all tasks and shared variables. 
+			Include task priority information.
+
+
+	c.
+
+	d.
+		Q.  Using SA/SD diagram, identify pattern that may lead to priority inversion.
+
+		A.
+			Because project uses binary semaphora when Task1 reserves resource semaphora and
+			then Task2 has higher priority than Task1 it preempts it. After this even tho task3
+			has highest priority it has to wait task2 because task1 is waiting it before it releases
+			semaphore.
+
+2.
+	a.
+		Q. 
+			Starting from beginning of main() -function, 
+			write down the source line numbers in order of execution until all tasks T1-T3 have completed.
+
+		A.
+			50-57
+			117
+			104
+			89
+			90
+			118
+			109
+			92
+			74
+			81
+			120
+			121
+			125
+	b.
+		Q. 
+			Draw a task timeline as ASCII characters to show task states during each time tick. 
+			Possible task states shall be
+			'X'     running
+			'b'     blocked due to preemption 
+			's'     blocked due to waiting for a semaphore
+			'_'     blocked due to delay requested by task itself (vTaskDelay)
+			Each task shall be on one line, starting time 0 means start of scheduling (actually entering the highest priority task for the first time: that would be debug task in this case). Example of two periodical tasks:
+			T2 higher priority, capacity 5, release time = 0, period 12
+			T1 lower priority, capacity 3, release time = 3, period 12
+			T1  ___bbXXX____
+			T2  XXXXX_______
+		
+		A.
+
+
+3.
+	Fix the priority inversion by using mutex instead of semaphore. 
+	Note that you need configure "configUSE_MUTEXES" (this is not clearly documented on FreeRTOS API page).
+
+	a.
+		Q.
+			Starting from beginning of main() -function, 
+			write down the source line numbers in order of execution until all tasks T1-T3 have completed.
+		
+		A.
+			50-58
+			117
+			104
+			89
+			90
+			118
+			92
+			120-121
+			125
+			74
+			77
+			109
+			
+
+
+	b.
+		Q.
+			Draw a task timeline as ASCII characters to show task states during each time tick.
+
+		A.
+
+		

@@ -53,7 +53,7 @@ int main( void )
 	xTaskCreate( vTask3, ( const char * ) "T3", 150, (void *)3, TASK3_PRIORITY, NULL );
 	// Create semaphore for sharing a resource between tasks 1 and 3 (shared resource is not implemented)
 	// and initialize it to value one
-	xSharedResourceSem = xSemaphoreCreateBinary();
+	xSharedResourceSem = xSemaphoreCreateMutex();
 	xSemaphoreGive(xSharedResourceSem);
 	vTaskStartScheduler();
 	return 0;
@@ -102,7 +102,7 @@ static void vTask2( void *pvParameters )
 {
 	( void ) pvParameters;
 	vTaskDelay( 2 );
-	_delay_ms( 2 );  //simulate work 
+	_delay_ms( 5 );  //simulate work 
 	//done, release CPU to lower priorities.
 	while(1)
 	{
