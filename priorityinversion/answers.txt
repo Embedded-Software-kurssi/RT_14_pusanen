@@ -1,0 +1,9 @@
+
+1.
+    a.
+        Q.  All RTOS functions use "system tick" as time unit. What is the system tick milliseconds in this example?
+
+        A.  Tickrate is 1000hz so it is 1ms
+
+    b.
+        Q. Draw a SA/SD data flow diagram including all tasks and shared variables. Include task priority information.
